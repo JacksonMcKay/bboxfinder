@@ -466,8 +466,8 @@ $(document).ready(function() {
     $( "#projection" ).val(currentproj);
 
     L.mapbox.accessToken = 'pk.eyJ1IjoiY3Vnb3MiLCJhIjoiY2p4Nm43MzA3MDFmZDQwcGxsMjB4Z3hnNiJ9.SQbnMASwdqZe6G4n6OMvVw';
-    map = L.mapbox.map('map').setView([0, 0], 3).addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
-
+    let currentLayer = L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v12')
+    map = L.mapbox.map('map').setView([0, 0], 3).addLayer(currentLayer);
     rsidebar = L.control.sidebar('rsidebar', {
         position: 'right',
         closeButton: true
@@ -729,14 +729,30 @@ $(document).ready(function() {
     // toggle #info-box
     $('#info-toggle-button').click(function(){
         $('#wgslabel, #projlabel').fadeToggle(200);
-        $('#info').delay(300).slideToggle(200);
-        
-        
+        $('#info').slideToggle(200);
+        $('#info-toggle-list').toggleClass('expanded');
+
         var buttonText = $('#info-toggle-button').text();
         if (buttonText == 'Hide Coordinates') {
             $('#info-toggle-button').text('Show Coordinates');
         } else {
             $('#info-toggle-button').text('Hide Coordinates');
+        }
+    });
+
+    // toggle between satellite and streets view
+    $('#satellite-streets-toggle').click(function(){
+        map.removeLayer(currentLayer);
+
+        var buttonText = $('#satellite-streets-toggle').text();
+        if (buttonText == 'Show street view') {
+            currentLayer = L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v12')
+            map.addLayer(currentLayer);
+            $('#satellite-streets-toggle').text('Show satellite view');
+        } else {
+            currentLayer = L.mapbox.styleLayer('mapbox://styles/mapbox/satellite-streets-v12')
+            map.addLayer(currentLayer);
+            $('#satellite-streets-toggle').text('Show street view');
         }
     });
 

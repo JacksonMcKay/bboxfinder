@@ -34,21 +34,42 @@ html, body, #map {
   opacity:1;
   cursor:pointer;
 }
-#info-toggle ul {
+#info-toggle-list {
   margin:0 0 0 20px;
   padding:0;
+  display: flex;
+  align-items: flex-end;
 }
-#info-toggle ul li {
+#info-toggle-list li {
   display:inline-block;
-  padding:4px 7px 0;
-  background-color:rgba(230,230,230,0.4);
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+  background-color:rgba(230,230,230,0.7);
   font-weight:900;
   cursor:pointer;
 }
-#info-toggle ul li.active {
+.info-toggle-btn {
+  padding:4px 7px 0;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+#info-toggle-list li.active {
   background-color:rgba(255,255,255,0.8);
+}
+#satellite-streets-toggle {
+  margin-bottom: 10px;
+  margin-right: 8px;
+  border-radius: 5px;
+  padding: 8px;
+  margin-left: auto;
+  transition: margin-bottom 200ms ease-in;
+}
+#info-toggle-list.expanded {
+  #satellite-streets-toggle {
+    margin-bottom: 30px;
+    margin-right: 8px;
+    border-radius: 5px;
+    padding: 8px;
+    margin-left: auto;
+  }
 }
 #info-toggle-button {
   background-color:rgba(0,0,0,0.7) !important;

@@ -465,7 +465,7 @@ $(document).ready(function() {
     // Have to init the projection input box as it is used to format the initial values
     $( "#projection" ).val(currentproj);
 
-    L.mapbox.accessToken = 'pk.eyJ1IjoiY3Vnb3MiLCJhIjoiY2p4Nm43MzA3MDFmZDQwcGxsMjB4Z3hnNiJ9.SQbnMASwdqZe6G4n6OMvVw';
+    L.mapbox.accessToken = 'pk.eyJ1Ijoid2FudGVkLXBhc3NlcmJ5IiwiYSI6ImNtYmVyZngwbTIxNm4ycXByc3B1bzVjYnMifQ.5mKetW2gPbQG6Upvp8S5aA';
     let currentLayer = L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v12')
     map = L.mapbox.map('map').setView([0, 0], 3).addLayer(currentLayer);
     rsidebar = L.control.sidebar('rsidebar', {
